@@ -38,6 +38,7 @@ Supports deposits, withdrawals, balance tracking, and transaction history - all 
 3. Access the API at http://localhost:8080
 4. Open Swagger UI at: [http://localhost:8080/swagger-ui/index.html](http://localhost:8080/swagger-ui/index.html)
     - Or view raw spec at [http://localhost:8080/v3/api-docs](http://localhost:8080/v3/api-docs)
+5. Alternatively run examples in `/scripts` once the application started
 ---
 
 ## 📚 API Endpoints
