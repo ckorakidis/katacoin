@@ -1,11 +1,11 @@
-package com.my.teya.controller;
+package com.my.coin.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.my.teya.controller.dto.AmountRequest;
-import com.my.teya.domain.Transaction;
-import com.my.teya.domain.TransactionType;
-import com.my.teya.exception.InsufficientBalanceException;
-import com.my.teya.service.LedgerService;
+import com.my.coin.controller.dto.AmountRequest;
+import com.my.coin.domain.Transaction;
+import com.my.coin.domain.TransactionType;
+import com.my.coin.exception.InsufficientBalanceException;
+import com.my.coin.service.LedgerService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;

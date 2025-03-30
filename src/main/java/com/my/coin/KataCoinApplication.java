@@ -1,4 +1,4 @@
-package com.my.teya;
+package com.my.coin;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,4 +1,4 @@
-package com.my.teya.controller.dto;
+package com.my.coin.controller.dto;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 

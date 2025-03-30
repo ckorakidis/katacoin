@@ -1,6 +1,6 @@
-package com.my.teya.exception;
+package com.my.coin.exception;
 
-import com.my.teya.controller.dto.ValidationError;
+import com.my.coin.controller.dto.ValidationError;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.validation.FieldError;

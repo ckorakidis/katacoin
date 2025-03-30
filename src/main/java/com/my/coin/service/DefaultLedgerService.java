@@ -1,16 +1,16 @@
-package com.my.teya.service;
+package com.my.coin.service;
 
-import com.my.teya.domain.Transaction;
-import com.my.teya.exception.InsufficientBalanceException;
+import com.my.coin.domain.Transaction;
+import com.my.coin.exception.InsufficientBalanceException;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.my.teya.domain.Transaction.transactionFor;
-import static com.my.teya.domain.TransactionType.DEPOSIT;
-import static com.my.teya.domain.TransactionType.WITHDRAWAL;
+import static com.my.coin.domain.Transaction.transactionFor;
+import static com.my.coin.domain.TransactionType.DEPOSIT;
+import static com.my.coin.domain.TransactionType.WITHDRAWAL;
 
 @Service
 public class DefaultLedgerService implements LedgerService {

@@ -1,4 +1,4 @@
-package com.my.teya.domain;
+package com.my.coin.domain;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;

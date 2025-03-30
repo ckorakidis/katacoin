@@ -1,7 +1,7 @@
-package com.my.teya.integration;
+package com.my.coin.integration;
 
-import com.my.teya.controller.dto.AmountRequest;
-import com.my.teya.controller.dto.BalanceResponse;
+import com.my.coin.controller.dto.AmountRequest;
+import com.my.coin.controller.dto.BalanceResponse;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

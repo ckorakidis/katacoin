@@ -1,4 +1,4 @@
-package com.my.teya.exception;
+package com.my.coin.exception;
 
 public class InsufficientBalanceException extends RuntimeException {
   public InsufficientBalanceException(String message) {

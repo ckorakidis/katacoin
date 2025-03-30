@@ -1,6 +1,6 @@
-package com.my.teya.service;
+package com.my.coin.service;
 
-import com.my.teya.domain.Transaction;
+import com.my.coin.domain.Transaction;
 
 import java.math.BigDecimal;
 import java.util.List;

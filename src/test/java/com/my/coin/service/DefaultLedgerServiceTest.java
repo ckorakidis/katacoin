@@ -1,7 +1,7 @@
-package com.my.teya.service;
+package com.my.coin.service;
 
-import com.my.teya.domain.TransactionType;
-import com.my.teya.exception.InsufficientBalanceException;
+import com.my.coin.domain.TransactionType;
+import com.my.coin.exception.InsufficientBalanceException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

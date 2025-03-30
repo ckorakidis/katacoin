@@ -1,4 +1,4 @@
-package com.my.teya.controller.dto;
+package com.my.coin.controller.dto;
 
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.Validation;

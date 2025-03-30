@@ -1,10 +1,10 @@
-package com.my.teya.controller;
+package com.my.coin.controller;
 
-import com.my.teya.controller.dto.AmountRequest;
-import com.my.teya.controller.dto.BalanceResponse;
-import com.my.teya.controller.dto.ValidationError;
-import com.my.teya.domain.Transaction;
-import com.my.teya.service.LedgerService;
+import com.my.coin.controller.dto.AmountRequest;
+import com.my.coin.controller.dto.BalanceResponse;
+import com.my.coin.controller.dto.ValidationError;
+import com.my.coin.domain.Transaction;
+import com.my.coin.service.LedgerService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.ExampleObject;
