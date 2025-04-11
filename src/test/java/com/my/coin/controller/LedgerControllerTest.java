@@ -21,6 +21,7 @@ import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilde
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 import static org.hamcrest.Matchers.hasItem;
@@ -133,7 +134,7 @@ class LedgerControllerTest {
   @DisplayName("GET /balance returns current balance")
   @Test
   void getBalanceReturnsValue() throws Exception {
-    Mockito.when(ledgerService.getBalance()).thenReturn(BigDecimal.valueOf(123.45));
+    Mockito.when(ledgerService.getBalance(Optional.empty())).thenReturn(BigDecimal.valueOf(123.45));
 
     mockMvc.perform(get("/api/ledger/balance"))
             .andExpect(status().isOk())

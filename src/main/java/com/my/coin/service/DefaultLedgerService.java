@@ -5,8 +5,10 @@ import com.my.coin.exception.InsufficientBalanceException;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import static com.my.coin.domain.Transaction.transactionFor;
 import static com.my.coin.domain.TransactionType.DEPOSIT;
@@ -30,6 +32,14 @@ public class DefaultLedgerService implements LedgerService {
     balance = balance.add(amount);
   }
 
+  @Override
+  public void deposit(Transaction transaction) {
+
+    transactions.add(transaction);
+
+    balance = balance.add(transaction.amount());
+  }
+
 
   @Override
   public void withdraw(BigDecimal amount) {
@@ -46,8 +56,15 @@ public class DefaultLedgerService implements LedgerService {
   }
 
   @Override
-  public BigDecimal getBalance() {
-    return balance;
+  public BigDecimal getBalance(Optional<LocalDateTime> dateOption) {
+
+    return transactions.stream()
+            .filter(transaction -> dateOption
+                    .map(date -> !transaction.timestamp().isBefore(date))
+                    .orElse(true))
+            .map(transaction ->
+                    transaction.type() == DEPOSIT ? transaction.amount() : transaction.amount().negate())
+            .reduce(new BigDecimal(0), (amount, acc) -> acc.add(amount));
   }
 
   @Override

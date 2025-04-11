@@ -16,12 +16,18 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/ledger")
 @Validated
 public class LedgerController {
+
+  private final String DATE_FORMAT = "yyyy-MM-dd";
 
   private final LedgerService service;
 
@@ -91,8 +97,10 @@ public class LedgerController {
   @Operation(summary = "Get current balance")
   @ApiResponse(responseCode = "200", description = "Returns current balance")
   @GetMapping("/balance")
-  public ResponseEntity<BalanceResponse> balance() {
-    return ResponseEntity.ok(new BalanceResponse(service.getBalance()));
+  public ResponseEntity<BalanceResponse> balance(@RequestParam Optional<String> fromDate) {
+      Optional<LocalDateTime> dateOption = fromDate.map(
+              dateStr -> LocalDate.parse(dateStr, DateTimeFormatter.ofPattern(DATE_FORMAT)).atStartOfDay());
+       return ResponseEntity.ok(new BalanceResponse(service.getBalance(dateOption)));
   }
 
   @Operation(summary = "Get transaction history")
