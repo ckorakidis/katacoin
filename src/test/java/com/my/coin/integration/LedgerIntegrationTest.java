@@ -46,7 +46,7 @@ class LedgerIntegrationTest {
   @Test
   @DisplayName("Deposit money and verify balance reflects it")
   void depositAndCheckBalance() {
-    AmountRequest deposit = new AmountRequest(BigDecimal.valueOf(150));
+    AmountRequest deposit = new AmountRequest(BigDecimal.valueOf(150.00));
     HttpEntity<AmountRequest> entity = new HttpEntity<>(deposit);
 
     ResponseEntity<Void> depositResponse = restTemplate.postForEntity(baseUrl("/deposit"), entity, Void.class);
@@ -54,7 +54,7 @@ class LedgerIntegrationTest {
 
     BalanceResponse balance = restTemplate.getForObject(baseUrl("/balance"), BalanceResponse.class);
     assertNotNull(balance);
-    assertEquals(new BigDecimal("150"), balance.balance());
+    assertEquals(new BigDecimal("150.00"), balance.balance());
   }
 
   @Test

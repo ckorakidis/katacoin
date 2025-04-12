@@ -10,10 +10,10 @@ public record Transaction(
         BigDecimal amount,
         LocalDateTime timestamp
 ) {
-  public static Transaction transactionFor(TransactionType deposit, BigDecimal amount) {
+  public static Transaction transactionFor(TransactionType type, BigDecimal amount) {
     return new Transaction(
             UUID.randomUUID(),
-            deposit,
+            type,
             amount,
             LocalDateTime.now());
   }
