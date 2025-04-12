@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
@@ -45,7 +44,7 @@ public class JpaLedgerService implements LedgerService {
     if (balance.compareTo(amount) < 0) {
       throw new InsufficientBalanceException("Insufficient balance to withdraw " + amount);
     }
-    repository.save(new TransactionEntity(TransactionType.WITHDRAWAL, amount));
+    repository.save(mapper.toEntity(Transaction.transactionFor(TransactionType.WITHDRAWAL, amount)));
   }
 
   @Override
@@ -57,19 +56,13 @@ public class JpaLedgerService implements LedgerService {
                     .orElse(true))
             .map(transaction ->
                     transaction.getType() == DEPOSIT ? transaction.getAmount() : transaction.getAmount().negate())
-            .reduce(new BigDecimal(0), (amount, acc) -> acc.add(amount));
+            .reduce(BigDecimal.ZERO, BigDecimal::add);
   }
 
   @Override
   public List<Transaction> getTransactions() {
-    return repository.findAll().stream()
-            .sorted(Comparator.comparing(TransactionEntity::getTimestamp).reversed())
-            .map(tx -> new Transaction(
-                    tx.getId(),
-                    tx.getType(),
-                    tx.getAmount(),
-                    tx.getTimestamp()
-            ))
+    return repository.findAllByOrderByTimestampDesc().stream()
+            .map(mapper::toDomain)
             .toList();
   }
 }
