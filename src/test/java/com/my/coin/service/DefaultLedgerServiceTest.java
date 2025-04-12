@@ -53,10 +53,15 @@ class DefaultLedgerServiceTest {
             LocalDate.parse("2020-01-30", formatter).atStartOfDay()));
     service.deposit(new Transaction(
             UUID.randomUUID(),
+            TransactionType.WITHDRAWAL,
+            new BigDecimal("10.0"),
+            LocalDate.parse("2020-01-31", formatter).atStartOfDay()));
+    service.deposit(new Transaction(
+            UUID.randomUUID(),
             TransactionType.DEPOSIT,
             new BigDecimal("150.0"),
             LocalDate.parse("2020-01-31", formatter).atStartOfDay()));
-    assertEquals(BigDecimal.valueOf(250.0),
+    assertEquals(BigDecimal.valueOf(240.0),
             service.getBalance(Optional.of(LocalDate.parse("2020-01-20", formatter).atStartOfDay())));
   }
 
